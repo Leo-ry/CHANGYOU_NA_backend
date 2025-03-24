@@ -9,6 +9,6 @@ spring:
     name: wirebarley-test
   profiles:
     active:
-      - local
-#      - dev
+#      - local
+      - dev
 #      - prod
