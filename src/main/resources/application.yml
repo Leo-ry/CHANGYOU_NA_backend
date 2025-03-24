@@ -1,0 +1,14 @@
+## Server Default 설정 -> 종료시 현재 실행중인 프로그램이 종료되면 종료하도록 수정
+server:
+  port: 18080
+  shutdown: graceful
+
+## Spring Default 설정
+spring:
+  application:
+    name: wirebarley-test
+  profiles:
+    active:
+      - local
+#      - dev
+#      - prod

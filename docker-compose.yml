@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    image: mariadb:10.7
+    container_name: wirebarley-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: wirebarley
+      MARIADB_USER: wirebarley
+      MARIADB_PASSWORD: wirebarley123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+
+  app:
+    build:
+      context: .
+    container_name: wirebarley-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/wirebarley
+      SPRING_DATASOURCE_USERNAME: wirebarley
+      SPRING_DATASOURCE_PASSWORD: wirebarley123
+    ports:
+      - "8080:18080"
+
+volumes:
+  db-data:
