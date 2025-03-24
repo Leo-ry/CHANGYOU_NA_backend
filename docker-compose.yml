@@ -26,7 +26,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/wirebarley
+      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/wirebarley
       SPRING_DATASOURCE_USERNAME: wirebarley
       SPRING_DATASOURCE_PASSWORD: wirebarley123
     ports:
