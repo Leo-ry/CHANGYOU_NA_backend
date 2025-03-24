@@ -12,7 +12,7 @@ public abstract class BaseException extends RuntimeException {
     }
 
     public HttpStatus getStatus() {
-        return HttpStatus.valueOf(errorCode.getCode());
+        return HttpStatus.valueOf(errorCode.getStatus().value());
     }
 
     public String getCode() {
